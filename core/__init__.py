@@ -1,0 +1,1 @@
+"""core — Lógica de análisis térmico (independiente de la UI)."""
