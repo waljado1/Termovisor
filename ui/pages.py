@@ -23,7 +23,7 @@ from core.ai_analysis import (kmeans_segmentar, colorizar_clusters,
 from core.metadata import encontrar_exiftool, _EXIFTOOL
 from core.extractor import FLIR_OK, _modulo_dji
 from ui.components import (js_descargar, tabla_detecciones, mapa_plotly,
-                           termometro_interactivo)
+                           termometro_interactivo, sam_panel)
 
 import sys
 
@@ -84,6 +84,11 @@ def index():
                 with ui.card().classes("w-full"):
                     ui.label("TERMÓMETRO INTERACTIVO").classes("text-h6")
                     termometro_interactivo(r)
+
+                # ── 🎯 SAM: segmentación por punto ──
+                with ui.expansion("🎯 SAM — Segmentación con IA",
+                                  icon="center_focus_strong").classes("w-full"):
+                    sam_panel(r)
 
                 # ── 🤖 IA: K-MEANS ──
                 with ui.expansion("🤖 ANÁLISIS IA — Zonas isotermas",
@@ -226,7 +231,7 @@ def index():
 
     # ══════════ 3) UI ══════════
     ui.label("INSPECCIÓN TERMOGRÁFICA DE FACHADAS").classes("text-h4")
-    ui.label("FLIR + DJI · análisis exploratorio · IA isotermas"
+    ui.label("FLIR + DJI · análisis exploratorio · IA isotermas + SAM"
              ).classes("text-subtitle1")
 
     with ui.card().classes("w-full"):
