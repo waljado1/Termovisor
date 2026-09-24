@@ -16,6 +16,6 @@ app.add_static_files("/uploads", str(UPLOADS))
 app.add_static_files("/detecciones", str(DETECCIONES))
 app.add_static_files("/informes", str(INFORMES))
 
-puerto = int(os.environ.get("PORT", 8080))
+puerto = int(os.environ.get("PORT", os.environ.get("APP_PORT", 7860)))
 ui.run(title="Inspección Termográfica", host="0.0.0.0", port=puerto,
        reload=False, show=False, dark=True)
